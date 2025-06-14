@@ -1,0 +1,49 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv
+# VSCode settings (optional, if using)
+.vscode/
+
+# Logs and local data
+*.log
+*.sqlite3
+*.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# LangChain cache or outputs (if any)
+.llm_cache/
+output/
+
+# Jupyter Notebooks checkpoints (if any)
+.ipynb_checkpoints/
+
+# MyPy / Pyright / testing tools
+.mypy_cache/
+.pytest_cache/
+coverage/
+htmlcov/
+
+# dotenv configs
+*.secret
+*.token
+
+# Pip dependency resolver
+pip-log.txt
+
+# New ignores
+.env
+encyclopedia.pdf
+faiss_index.bin
+chunks.npy
+

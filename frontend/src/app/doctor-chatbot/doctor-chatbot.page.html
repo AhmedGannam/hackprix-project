@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Doctor Chatbot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="chat-container">
+    <div *ngFor="let msg of messages" [ngClass]="{'user-msg': msg.sender === 'user', 'bot-msg': msg.sender === 'bot'}" class="chat-message">
+      <strong *ngIf="msg.sender === 'user'">You:</strong>
+      <strong *ngIf="msg.sender === 'bot'">Doctor:</strong>
+      <span>{{ msg.text }}</span>
+    </div>
+    <ion-spinner *ngIf="loading" name="dots"></ion-spinner>
+  </div>
+  <form (ngSubmit)="sendMessage()" class="chat-input-form">
+    <ion-item>
+      <ion-input [(ngModel)]="userInput" name="userInput" placeholder="Type your question..." [disabled]="loading"></ion-input>
+      <ion-button type="submit" [disabled]="loading || !userInput.trim()">Send</ion-button>
+    </ion-item>
+  </form>
+</ion-content>

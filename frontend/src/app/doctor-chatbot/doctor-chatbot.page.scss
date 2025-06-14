@@ -1,0 +1,31 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  min-height: 60vh;
+}
+
+.chat-message {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-break: break-word;
+}
+
+.user-msg {
+  align-self: flex-end;
+  background: #d1f7c4;
+}
+
+.bot-msg {
+  align-self: flex-start;
+  background: #f1f1f1;
+}
+
+.chat-input-form {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 8px 0;
+}

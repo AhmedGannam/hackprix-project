@@ -7,9 +7,17 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'doctor-chatbot',
+    loadChildren: () => import('./doctor-chatbot/doctor-chatbot.module').then( m => m.DoctorChatbotPageModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'doctor-chatbot',
+    loadChildren: () => import('./doctor-chatbot/doctor-chatbot.module').then( m => m.DoctorChatbotPageModule)
   },
 ];
 
