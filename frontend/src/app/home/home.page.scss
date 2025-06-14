@@ -1,27 +1,547 @@
-#container {
-  text-align: center;
+:root {
+  --medical-primary: #008080;        // Teal
+  --medical-secondary: #00CED1;      // Dark Turquoise
+  --medical-accent: #20B2AA;         // Light Sea Green
+  --medical-light: #FFFFFF;          // White
+  --medical-dark: #006666;           // Dark Teal
+  --medical-white: #FFFFFF;
+  --medical-emergency: #FF5252;      // Bright Red
+  --gradient-primary: linear-gradient(135deg, var(--medical-primary), var(--medical-accent));
+  --gradient-secondary: linear-gradient(135deg, var(--medical-secondary), var(--medical-primary));
+  --shadow-soft: 0 4px 20px rgba(0, 128, 128, 0.08);
+  --shadow-medium: 0 8px 30px rgba(0, 128, 128, 0.12);
+  --shadow-strong: 0 12px 40px rgba(0, 128, 128, 0.18);
+}
 
-  position: absolute;
+// Base Styles
+* {
+  box-sizing: border-box;
+}
+
+// Header Styles
+.header-fade-in {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.custom-toolbar {
+  --background: var(--gradient-primary);
+  --color: var(--medical-white);
+  --border-width: 0;
+  padding: 0 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.header-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon {
+  font-size: 1.6rem;
+  animation: pulse 2s infinite;
+}
+
+.emergency-btn {
+  --color: var(--medical-white);
+  --background: rgba(255, 255, 255, 0.1);
+  --border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  
+  &:hover {
+    --background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+}
+
+// Content Styles
+.medical-content {
+  --background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+// Background Video Styles
+.background-video {
+  position: fixed;
+  top: 0;
   left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.85;
+  filter: blur(0.5px) brightness(0.95);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.overlay-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.98);
+  min-height: 100vh;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+// Hero Section
+.hero-section{
+  display: flex;
+  justify-content: center;
+}
 
-  color: #8c8c8c;
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
 
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin: 0 0 20px 35px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pulse-indicator {
+  width: 80px;
+  border: 3px solid var(--medical-white);
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  animation: heartbeat 2s infinite;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: var(--medical-white);
+    border-radius: 50%;
+  }
+}
+
+// Services Section
+.services-container {
+
+  background: var(--medical-light);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--medical-dark);
+  margin: 0 0 50px 0;
+  position: relative;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-primary);
+    margin: 20px auto 0;
+    border-radius: 2px;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: repeat(2, auto);  
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  --background: var(--medical-light);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  position: relative;
+  background: var(--medical-light);
+  border: 1px solid rgba(224, 224, 224, 0.5);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-strong);
+    
+    &::before {
+      transform: scaleX(1);
+    }
+    
+    .service-icon {
+      transform: scale(1.15);
+    }
+  }
+}
+
+.card-icon-container {
+  text-align: center;
+  padding: 35px 0 25px;
+  background: rgba(224, 247, 250, 0.3);
+  margin: -16px -16px 25px;
+  border-radius: 24px 24px 0 0;
+}
+
+.service-icon {
+  font-size: 3.8rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.pulse-icon {
+  animation: pulse 3s infinite;
+  color: #00CED1;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--medical-dark);
+  text-align: center;
+}
+
+.service-subtitle {
+  color: var(--medical-secondary);
+  text-align: center;
+  font-size: 1.05rem;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.service-description {
+  color: var(--medical-dark);
+  line-height: 1.6;
+  margin: 25px 0 30px 0;
+  opacity: 0.85;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.service-button {
+  --background: var(--gradient-primary);
+  --color: var(--medical-white);
+  --border-radius: 16px;
+  font-weight: 600;
+  height: 52px;
+  margin: 0 20px 25px;
+  --box-shadow: var(--shadow-soft);
+  font-size: 1.05rem;
+  
+  &:hover {
+    --background: var(--gradient-secondary);
+    transform: translateY(-3px);
+    --box-shadow: 0 8px 25px rgba(0, 128, 128, 0.2);
+  }
+}
+
+// Specific service card colors
+.mental-health:hover::before {
+  background: linear-gradient(90deg, #008B8B, #008080);
+}
+
+.symptom-checker:hover::before {
+  background: linear-gradient(90deg, #00CED1, #008B8B);
+}
+
+.medication-assistant:hover::before {
+  background: linear-gradient(90deg, #20B2AA, #008080);
+}
+
+.report-analysis:hover::before {
+  background: linear-gradient(90deg, #48D1CC, #006666);
+}
+
+// Emergency Section
+.emergency-section {
+  padding: 25px;
+  margin: 60px 0 40px;
+  background: var(--medical-light);
+}
+
+.emergency-card {
+  --background: linear-gradient(135deg, rgba(255, 82, 82, 0.1), rgba(255, 140, 0, 0.1));
+  border: 2px dashed var(--medical-emergency);
+  border-radius: 24px;
+  box-shadow: var(--shadow-medium);
+  background: var(--medical-light) !important;
+}
+
+.emergency-content {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.emergency-icon {
+  font-size: 3.5rem;
+  color: var(--medical-emergency);
+  animation: pulse 1.5s infinite;
+}
+
+.emergency-text {
+  flex: 1;
+  min-width: 220px;
+  
+  h3 {
+    margin: 0 0 10px 0;
+    color: var(--medical-emergency);
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  
+  p {
+    margin: 0;
+    color: var(--medical-dark);
+    opacity: 0.9;
+    font-size: 1.1rem;
+  }
+}
+
+.emergency-call-btn {
+  --background: var(--medical-emergency);
+  --color: var(--medical-white);
+  --border-radius: 16px;
+  font-weight: 700;
+  height: 55px;
+  min-width: 160px;
+  --box-shadow: 0 4px 15px rgba(255, 82, 82, 0.2);
+  font-size: 1.1rem;
+  
+  &:hover {
+    --background: #FF1744;
+    transform: scale(1.05);
+    --box-shadow: 0 8px 25px rgba(255, 82, 82, 0.3);
+  }
+}
+
+// Footer
+.footer-section {
+  padding: 40px 20px 60px;
+  text-align: center;
+  background: var(--medical-light);
+}
+
+.footer-text {
+  color: var(--medical-secondary);
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   margin: 0;
+  background: rgba(224, 247, 250, 0.5);
+  padding: 16px 35px;
+  border-radius: 35px;
+  font-weight: 500;
+  
+  ion-icon {
+    color: var(--medical-primary);
+    font-size: 1.3rem;
+  }
 }
 
-#container a {
-  text-decoration: none;
+// Animations
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.9;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+// Animation Classes
+.slide-in-top {
+  animation: slideInTop 0.8s ease-out;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+// Responsive Design
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .background-video {
+    opacity: 0.6;
+  }
+  
+  .hero-section {
+    padding: 50px 15px 70px;
+    border-radius: 0 0 40px 40px;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+  }
+  
+  .emergency-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .emergency-text {
+    order: 2;
+  }
+  
+  .emergency-call-btn {
+    order: 3;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 40px 15px 60px;
+  }
+  
+  .services-container {
+    padding: 35px 15px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  :root {
+    --medical-light: #1a1a1a;
+    --medical-white: #2d2d2d;
+    --medical-dark: #e0e0e0;
+  }
+  
+  .service-card,
+  .emergency-card {
+    background: rgba(30, 30, 30, 0.9) !important;
+    border-color: rgba(80, 80, 80, 0.5);
+  }
+  
+  .overlay-content {
+    background: rgba(30, 30, 30, 0.95);
+  }
 }

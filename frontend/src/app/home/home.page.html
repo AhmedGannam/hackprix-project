@@ -1,20 +1,133 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+<ion-header [translucent]="true" class="header-fade-in">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="header-title">
+      <ion-icon name="medical" class="header-icon pulse-icon"></ion-icon>
+      AI Medical Hub
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="emergency-btn">
+        <ion-icon name="call" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="medical-content">
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="../../assets/videos/dna-particles.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <!-- Hero Section -->
+<div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Your Health, Our Priority</h1>
+        <p class="hero-subtitle">Advanced AI-powered medical assistance at your fingertips</p>
+        <div class="pulse-indicator"></div>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-container">
+      <h2 class="section-title fade-in-up">Medical Services</h2>
+      
+      <div class="services-grid">
+        <ion-card class="service-card mental-health fade-in-up" [style.animation-delay]="'0.1s'">
+          <div class="card-icon-container">
+            <ion-icon name="heart" class="service-icon pulse-icon"></ion-icon>
+          </div>
+          <ion-card-header>
+            <ion-card-title class="service-title">Mental Health Chatbot</ion-card-title>
+            <ion-card-subtitle class="service-subtitle">24/7 Mental Health Support</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="service-description">Get immediate support and guidance for mental health concerns with our AI counselor.</p>
+            <ion-button expand="block" fill="solid" class="service-button">
+              <ion-icon name="chatbubbles" slot="start"></ion-icon>
+              Start Chat
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="service-card symptom-checker fade-in-up" [style.animation-delay]="'0.2s'">
+          <div class="card-icon-container">
+            <ion-icon name="medical" class="service-icon pulse-icon"></ion-icon>
+          </div>
+          <ion-card-header>
+            <ion-card-title class="service-title">Symptom Checker</ion-card-title>
+            <ion-card-subtitle class="service-subtitle">AI-Powered Diagnosis Assistant</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="service-description">Analyze your symptoms and get preliminary health assessments instantly.</p>
+            <ion-button expand="block" fill="solid" class="service-button">
+              <ion-icon name="search" slot="start"></ion-icon>
+              Check Symptoms
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="service-card medication-assistant fade-in-up" [style.animation-delay]="'0.3s'">
+          <div class="card-icon-container">
+            <ion-icon name="alarm" class="service-icon pulse-icon"></ion-icon>
+          </div>
+          <ion-card-header>
+            <ion-card-title class="service-title">Medication Assistant</ion-card-title>
+            <ion-card-subtitle class="service-subtitle">Smart Medication Management</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="service-description">Manage medications, set reminders, and schedule appointments effortlessly.</p>
+            <ion-button expand="block" fill="solid" class="service-button">
+              <ion-icon name="calendar" slot="start"></ion-icon>
+              Manage Schedule
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="service-card report-analysis fade-in-up" [style.animation-delay]="'0.4s'">
+          <div class="card-icon-container">
+            <ion-icon name="document-text" class="service-icon pulse-icon"></ion-icon>
+          </div>
+          <ion-card-header>
+            <ion-card-title class="service-title">Report Analysis</ion-card-title>
+            <ion-card-subtitle class="service-subtitle">AI Medical Report Interpreter</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p class="service-description">Upload and get detailed explanations of your medical reports and test results.</p>
+            <ion-button expand="block" fill="solid" class="service-button">
+              <ion-icon name="cloud-upload" slot="start"></ion-icon>
+              Upload Report
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <!-- Emergency Section -->
+    <div class="emergency-section fade-in-up">
+      <ion-card class="emergency-card">
+        <ion-card-content>
+          <div class="emergency-content">
+            <ion-icon name="warning" class="emergency-icon"></ion-icon>
+            <div class="emergency-text">
+              <h3>Medical Emergency?</h3>
+              <p>For immediate medical assistance, call emergency services</p>
+            </div>
+            <ion-button color="danger" fill="solid" class="emergency-call-btn">
+              <ion-icon name="call" slot="start"></ion-icon>
+              Emergency
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-section fade-in-up">
+      <p class="footer-text">
+        <ion-icon name="shield-checkmark"></ion-icon>
+        Your privacy and data security are our top priorities
+      </p>
+    </div>
+
 </ion-content>
